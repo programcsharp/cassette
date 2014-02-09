@@ -21,10 +21,16 @@ namespace Cassette
             AddAssets(bundle, allFiles, bundleDescriptor.AssetFilenames);
             AddReferences(bundle, bundleDescriptor.References);
             SetIsSortedIfExplicitFilenames(bundle, bundleDescriptor.AssetFilenames);
+
             if (bundleDescriptor.IsFromFile)
             {
                 bundle.DescriptorFilePath = bundleDescriptor.File.FullPath;
             }
+            if (!string.IsNullOrWhiteSpace(bundleDescriptor.PageLocation))
+            {
+                bundle.PageLocation = bundleDescriptor.PageLocation;
+            }
+
             return bundle;
         }
 
